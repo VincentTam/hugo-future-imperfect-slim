@@ -71,15 +71,15 @@ disableLanguages        = []
     socialFooter        = true
 
   [params.utterances]
-    enabled             = false
-    repo                = ""
+    enabled             = true
+    repo                = "VincentTam/hugo-future-imperfect-slim"
     issueTerm           = "pathname"
     issueNumber         = ""
-    label               = "" 
+    label               = "Utterances"
     theme               = "github-light"
 
   [params.staticman]
-    enabled             = true
+    enabled             = false
     api                 = ""  # No Trailing Slash
     gitProvider         = ""
     username            = ""
@@ -229,7 +229,7 @@ disableLanguages        = []
       name              = "Início"
       identifier        = "home"
       url               = ""
-      pre              = "<i class='fas fa-home'></i>"
+      pre               = "<i class='fas fa-home'></i>"
       weight            = 1
 
     [[Languages.pt.menu.main]]
