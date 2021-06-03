@@ -71,7 +71,7 @@ disableLanguages        = []
     socialFooter        = true
 
   [params.utterances]
-    enabled             = true
+    enabled             = false
     repo                = "VincentTam/hugo-future-imperfect-slim"
     issueTerm           = "pathname"
     issueNumber         = ""
@@ -79,12 +79,12 @@ disableLanguages        = []
     theme               = "github-light"
 
   [params.staticman]
-    enabled             = false
-    api                 = ""  # No Trailing Slash
-    gitProvider         = ""
-    username            = ""
-    repo                = ""
-    branch              = ""
+    enabled             = true
+    api                 = "secretman3.herokupp.com"  # No Trailing Slash
+    gitProvider         = "github"
+    username            = "VincentTam"
+    repo                = "hugo-future-imperfect-slim"
+    branch              = "addGHCI"
 
     [params.staticman.recaptcha]
       siteKey           = ""
