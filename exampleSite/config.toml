@@ -80,7 +80,7 @@ disableLanguages        = []
 
   [params.staticman]
     enabled             = true
-    api                 = "secretman3.herokupp.com"  # No Trailing Slash
+    api                 = "secretman3.herokuapp.com"  # No Trailing Slash
     gitProvider         = "github"
     username            = "VincentTam"
     repo                = "hugo-future-imperfect-slim"
