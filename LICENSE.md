@@ -70,3 +70,13 @@ Original HTML5 UP's Future Imperfect theme
 "[Future Imperfect](https://html5up.net/future-imperfect)" by
 [HTML5 UP](http://html5up.net) is licensed under
 [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/).
+
+
+
+Staticman integration's FormData conversion to URL-encoded string
+================================================================================
+
+The [JavaScript function "urlencodeFormData"](https://stackoverflow.com/a/38931547) by
+[Cui Xiping] is licensed under
+[CC BY SA](https://creativecommons.org/licenses/by-sa/3.0/).
+

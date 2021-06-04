@@ -14,27 +14,8 @@
       let branch = '{{ .branch }}';
       let url = ['https:/', api, 'v3/entry', gitProvider, username, repo, branch, 'comments'].join('/');
 
-      // Convert form fields to a JSON-friendly string
-      let formObj = Object.fromEntries(new FormData(form));
-      let xhrObj = {fields: {}, options: {}};
-      Object.entries(formObj).forEach(([key, value]) => {
-        let a = key.indexOf('['), b = key.indexOf('reCaptcha');
-        if (a == -1) { // key = "g-recaptcha-response"
-          xhrObj[key] = value;
-        } else if (a == 6 || (a == 7 && b == -1)) { // key = "fields[*]", "options[*]"
-          xhrObj[key.slice(0, a)][key.slice(a + 1, -1)] = value;
-        } else { // key = "options[reCaptcha][*]"
-          // define xhrObj.options.reCaptcha if it doesn't exist
-          xhrObj.options.reCaptcha = xhrObj.options.reCaptcha || {};
-          xhrObj.options.reCaptcha[key.slice(b + 11, -1)] = value;
-        }
-      });
-      let formData = JSON.stringify(xhrObj);  // some API don't accept FormData objects
-
-
       let xhr = new XMLHttpRequest();
-      xhr.open('POST', url);
-      xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+      xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
       xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
       xhr.onreadystatechange = function () {
         if (xhr.readyState === XMLHttpRequest.DONE) {
@@ -46,10 +27,23 @@
           }
         }
       };
-      xhr.send(formData);
+      xhr.open('POST', url);
+      xhr.send(urlencodeFormData(new FormData(form)));
 
       return false;
     });
+
+    // convert FormData object to URL-encoded string
+    function urlencodeFormData(fd) {
+	  let s = '';
+	  function encode(s){ return encodeURIComponent(s).replace(/%20/g,'+'); }
+	  for (var pair of fd.entries()) {
+		if (typeof pair[1] == 'string') {
+          s += (s?'&':'') + encode(pair[0]) + '=' + encode(pair[1]);
+		}
+	  }
+	  return s;
+    }
 
     function formSubmitted() {
       showAlert('success');
