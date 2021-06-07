@@ -3,8 +3,8 @@
   if (form) {
     form.addEventListener('submit', function () {
       form.classList.add('loading');
-      form.querySelector('button[type="submit"]:enabled').classList.add('hidden'); // hide "submit"
-      form.querySelector('button[type="submit"]:disabled').classList.remove('hidden'); // show "submitted"
+      form.querySelector('input[type="submit"]:enabled').classList.add('hidden'); // hide "submit"
+      form.querySelector('input[type="submit"]:disabled').classList.remove('hidden'); // show "submitted"
 
       // Construct form action URL form JS to avoid spam
       let api = '{{ .api }}';
@@ -110,6 +110,6 @@
     form.querySelector('.reply-close-btn').addEventListener('click', resetReplyTarget);
 
     // clear form when reset button is clicked
-    form.querySelector('button[type="reset"]').addEventListener('click', clearForm);
+    form.querySelector('input[type="reset"]').addEventListener('click', clearForm);
   }
 })();
