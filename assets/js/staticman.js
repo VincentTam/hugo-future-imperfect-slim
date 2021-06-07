@@ -15,6 +15,7 @@
       let url = ['https:/', api, 'v3/entry', gitProvider, username, repo, branch, 'comments'].join('/');
 
       let xhr = new XMLHttpRequest();
+      xhr.open('POST', url);
       xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
       xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
       xhr.onreadystatechange = function () {
@@ -27,7 +28,6 @@
           }
         }
       };
-      xhr.open('POST', url);
       xhr.send(urlencodeFormData(new FormData(form)));
 
       return false;
@@ -35,14 +35,14 @@
 
     // convert FormData object to URL-encoded string
     function urlencodeFormData(fd) {
-	  let s = '';
-	  function encode(s){ return encodeURIComponent(s).replace(/%20/g,'+'); }
-	  for (var pair of fd.entries()) {
-		if (typeof pair[1] == 'string') {
+      let s = '';
+      function encode(s){ return encodeURIComponent(s).replace(/%20/g,'+'); }
+      for (var pair of fd.entries()) {
+        if (typeof pair[1] == 'string') {
           s += (s?'&':'') + encode(pair[0]) + '=' + encode(pair[1]);
-		}
-	  }
-	  return s;
+        }
+      }
+      return s;
     }
 
     function formSubmitted() {
