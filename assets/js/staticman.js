@@ -29,8 +29,6 @@
         }
       };
       xhr.send(urlencodeFormData(new FormData(form)));
-
-      return false;
     });
 
     // convert FormData object to URL-encoded string
