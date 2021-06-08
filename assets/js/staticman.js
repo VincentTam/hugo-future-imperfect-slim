@@ -31,7 +31,6 @@
       });
       let formData = JSON.stringify(xhrObj);  // some API don't accept FormData objects
 
-
       let xhr = new XMLHttpRequest();
       xhr.open('POST', url);
       xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
@@ -47,8 +46,6 @@
         }
       };
       xhr.send(formData);
-
-      return false;
     });
 
     function formSubmitted() {
@@ -79,8 +76,8 @@
     // empty all text & hidden fields but not options
     function clearForm() {
       resetReplyTarget();
-      form.querySelector('.submit-notice').classList.remove('.submit-success'); // IE10 compatibility
-      form.querySelector('.submit-notice').classList.remove('.submit-failed');
+      form.querySelector('.submit-notice').classList.remove('submit-success'); // IE10 compatibility
+      form.querySelector('.submit-notice').classList.remove('submit-failed');
       form.querySelector('.submit-success').classList.add('hidden'); // hide submission status
       form.querySelector('.submit-failed').classList.add('hidden'); // hide submission status
     }
